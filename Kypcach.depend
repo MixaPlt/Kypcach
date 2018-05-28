@@ -1,0 +1,62 @@
+# depslib dependency file v1.0
+1527541498 source:/home/mixa/Projects/Kypcach/main.cpp
+	<SFML/Graphics.hpp>
+	"MenuButton.hpp"
+	"Resources.hpp"
+	<functional>
+
+1527542963 source:/home/mixa/Projects/Kypcach/src/MenuButton.cpp
+	"MenuButton.hpp"
+	<iostream>
+
+1527346729 /home/mixa/Projects/Kypcach/include/MenuButton.h
+	<SFML/Graphics.hpp>
+	<Resources.h>
+
+1527541730 source:/home/mixa/Projects/Kypcach/src/Resources.cpp
+	"Resources.hpp"
+
+1527346902 /home/mixa/Projects/Kypcach/include/Resources.h
+	<SFML/Graphics.hpp>
+
+1527543155 /home/mixa/Projects/Kypcach/include/MenuButton.hpp
+	<SFML/Graphics.hpp>
+	"Resources.hpp"
+	"Events.hpp"
+
+1527541722 /home/mixa/Projects/Kypcach/include/Resources.hpp
+	<SFML/Graphics.hpp>
+
+1527533447 /home/mixa/Projects/Kypcach/include/Events.hpp
+	<set>
+	<functional>
+	<memory>
+	<assert.h>
+
+1527541498 source:/home/mixa/Projects/Kyp/main.cpp
+	<SFML/Graphics.hpp>
+	"MenuButton.hpp"
+	"Resources.hpp"
+	<functional>
+
+1527543155 /home/mixa/Projects/Kyp/include/MenuButton.hpp
+	<SFML/Graphics.hpp>
+	"Resources.hpp"
+	"Events.hpp"
+
+1527541722 /home/mixa/Projects/Kyp/include/Resources.hpp
+	<SFML/Graphics.hpp>
+
+1527533447 /home/mixa/Projects/Kyp/include/Events.hpp
+	<set>
+	<functional>
+	<memory>
+	<assert.h>
+
+1527543185 source:/home/mixa/Projects/Kyp/src/MenuButton.cpp
+	"MenuButton.hpp"
+	<iostream>
+
+1527541730 source:/home/mixa/Projects/Kyp/src/Resources.cpp
+	"Resources.hpp"
+
