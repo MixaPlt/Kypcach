@@ -7,8 +7,8 @@ MenuButton::MenuButton(const sf::String& _content, const sf::Vector2f& _size, co
 {
     text.setFont(Resources::getSansation());
 
-    out_color = sf::Color(200, 200, 200, 255);
-    over_color = sf::Color(200, 200, 220, 255);
+    out_color = sf::Color(190, 190, 190, 255);
+    over_color = sf::Color(200, 200, 250, 255);
     font_color = sf::Color(50, 50, 50, 255);
     text.setFillColor(font_color);
 
@@ -22,6 +22,8 @@ MenuButton::MenuButton(const sf::String& _content, const sf::Vector2f& _size, co
 	setFontSize(45);
 	setPosition(_position);
 	mouseOver = 0;
+
+	upid = Resources::updater.add(this, &MenuButton::update);
 }
 
 bool MenuButton::isMouseOver() const
@@ -63,7 +65,7 @@ void MenuButton::setPosition(const sf::Vector2f &_position)
 
 MenuButton::~MenuButton()
 {
-    //dtor
+    Resources::updater.remove(upid);
 }
 
 void MenuButton::draw(sf::RenderTarget& target, sf::RenderStates states) const

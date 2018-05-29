@@ -1,3 +1,4 @@
+#pragma once
 #include <set>
 #include <functional>
 #include <memory>
@@ -52,9 +53,11 @@ struct event
 private:
     std::set< delegate_void* > poll;
 public:
-    template< class T, class U > void add( T* object, U method )
+    template< class T, class U > delegate_void* add( T* object, U method )
     {
-        poll.insert(new delegate_void (object, method));
+        delegate_void *dv = new delegate_void (object, method);
+        poll.insert(dv);
+        return dv;
     }
     void call()
     {
@@ -62,6 +65,10 @@ public:
         {
             (*i)->call();
         }
+    }
+    void remove(delegate_void* dv)
+    {
+        poll.erase(poll.find(dv));
     }
 };
 

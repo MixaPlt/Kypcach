@@ -2,6 +2,10 @@
 
 sf::Font* Resources::sansation = new sf::Font;
 sf::RenderWindow Resources::_mainWindow(sf::VideoMode(800, 600), "Kypcach");
+event Resources::updater;
+sf::Clock Resources::clock;
+sf::Time Resources::mouseLeftDown;
+sf::Time Resources::mouseLeftUp;
 
 Resources::Resources()
 {

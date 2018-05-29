@@ -7,7 +7,7 @@
 class MenuButton : public sf::Drawable
 {
     public:
-        MenuButton(const sf::String&, const sf::Vector2f&, const sf::Vector2f&);
+        MenuButton(const sf::String& content, const sf::Vector2f& size, const sf::Vector2f& position);
         virtual ~MenuButton();
 
         void setContent(sf::String content);
@@ -36,7 +36,7 @@ class MenuButton : public sf::Drawable
         void mouseLeave();
         void onClick();
         bool mouseOver;
-
+        delegate_void* upid;
 };
 
 #endif // MENUBUTTON_H

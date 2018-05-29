@@ -2,17 +2,17 @@
 #include "MenuButton.hpp"
 #include "Resources.hpp"
 #include <functional>
+#include <MainMenu.hpp>
 
 int main()
 {
     sf::RenderWindow& window(Resources::mainWindow());
+    sf::Color background_color(150, 200, 200, 255);
     if(Resources::unload())
         return 1;
 //!-------------------------------------------------------------------------
-    event updater;
 
-    MenuButton button(L"Кто прочитал\nтот здохнет", sf::Vector2f(300, 100), sf::Vector2f(100, 100));
-    updater.add(&button, &MenuButton::update);
+    MainMenu mainMenu;
 
     while (window.isOpen())
     {
@@ -22,9 +22,9 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        updater.call();
-        window.clear();
-        window.draw(button);
+        Resources::updater.call();
+        window.clear(background_color);
+        window.draw(mainMenu);
         window.display();
     }
 

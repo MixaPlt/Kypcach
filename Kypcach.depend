@@ -33,30 +33,41 @@
 	<memory>
 	<assert.h>
 
-1527541498 source:/home/mixa/Projects/Kyp/main.cpp
+1527588415 source:/home/mixa/Projects/Kyp/main.cpp
 	<SFML/Graphics.hpp>
 	"MenuButton.hpp"
 	"Resources.hpp"
 	<functional>
+	<MainMenu.hpp>
 
-1527543155 /home/mixa/Projects/Kyp/include/MenuButton.hpp
+1527587912 /home/mixa/Projects/Kyp/include/MenuButton.hpp
 	<SFML/Graphics.hpp>
 	"Resources.hpp"
 	"Events.hpp"
 
-1527541722 /home/mixa/Projects/Kyp/include/Resources.hpp
+1527588913 /home/mixa/Projects/Kyp/include/Resources.hpp
 	<SFML/Graphics.hpp>
+	<Events.hpp>
 
-1527533447 /home/mixa/Projects/Kyp/include/Events.hpp
+1527587988 /home/mixa/Projects/Kyp/include/Events.hpp
 	<set>
 	<functional>
 	<memory>
 	<assert.h>
 
-1527543185 source:/home/mixa/Projects/Kyp/src/MenuButton.cpp
+1527588041 source:/home/mixa/Projects/Kyp/src/MenuButton.cpp
 	"MenuButton.hpp"
 	<iostream>
 
-1527541730 source:/home/mixa/Projects/Kyp/src/Resources.cpp
+1527586216 source:/home/mixa/Projects/Kyp/src/Resources.cpp
 	"Resources.hpp"
+
+1527588457 source:/home/mixa/Projects/Kyp/src/MainMenu.cpp
+	"MainMenu.hpp"
+
+1527588415 /home/mixa/Projects/Kyp/include/MainMenu.hpp
+	<MenuButton.hpp>
+	<SFML/Graphics.hpp>
+	"Resources.hpp"
+	"Events.hpp"
 

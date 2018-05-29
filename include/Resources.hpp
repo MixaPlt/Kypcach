@@ -1,6 +1,7 @@
 #ifndef RESOURCES_H
 #define RESOURCES_H
 #include <SFML/Graphics.hpp>
+#include <Events.hpp>
 
 class Resources
 {
@@ -11,6 +12,10 @@ class Resources
         static bool unload();
         static sf::Font& getSansation();
         static sf::RenderWindow& mainWindow();
+        static event updater;
+        static sf::Clock clock;
+        static sf::Time mouseLeftDown;
+        static sf::Time mouseLeftUp;
 
     protected:
 
