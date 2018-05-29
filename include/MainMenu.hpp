@@ -15,13 +15,13 @@ class MainMenu : public sf::Drawable
 
     private:
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-        MenuButton playButton;
-        MenuButton settingButton;
-        MenuButton techButton;
-        MenuButton exitButton;
-        /*void play();
+        MenuButton* playButton;
+        MenuButton* settingButton;
+        MenuButton* techButton;
+        MenuButton* exitButton;
+        void play();
         void settings();
-        void tech();*/
+        void tech();
         void exit();
 };
 

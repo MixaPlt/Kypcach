@@ -3,8 +3,9 @@
 #include <functional>
 #include <memory>
 #include <assert.h>
+#include "Resources.hpp"
 
-class delegate_container
+struct delegate_container
 {
 public:
     virtual void call()
@@ -16,7 +17,7 @@ public:
 template< class T, class M > class container_void : public delegate_container {};
 
 template< class T >
-class container_void< T, void (T::*)(void) > : public delegate_container
+struct container_void< T, void (T::*)(void) > : public delegate_container
 {
 private:
     T *object;
@@ -29,7 +30,7 @@ public:
     }
 };
 
-class delegate_void
+struct delegate_void
 {
 private:
     delegate_container *container;
@@ -68,7 +69,9 @@ public:
     }
     void remove(delegate_void* dv)
     {
-        poll.erase(poll.find(dv));
+        std::set< delegate_void* >::iterator i = poll.find(dv);
+        if(i != poll.end())
+            poll.erase(i);
     }
 };
 

@@ -37,6 +37,8 @@ class MenuButton : public sf::Drawable
         void onClick();
         bool mouseOver;
         delegate_void* upid;
+        sf::Time clickTime;
+        sf::Time overTime;
 };
 
 #endif // MENUBUTTON_H

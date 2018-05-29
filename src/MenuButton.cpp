@@ -66,6 +66,7 @@ void MenuButton::setPosition(const sf::Vector2f &_position)
 MenuButton::~MenuButton()
 {
     Resources::updater.remove(upid);
+    std::cout << "Button deleted\n";
 }
 
 void MenuButton::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -84,10 +85,13 @@ void MenuButton::update()
         else
             mouseLeave();
     }
+    if(mouseOver && overTime < Resources::mouseLeftDown && Resources::mouseLeftDown < Resources::mouseLeftUp && clickTime < Resources::mouseLeftDown)
+        onClick();
 }
 
 void MenuButton::mouseEnter()
 {
+    overTime = Resources::clock.getElapsedTime();
     rectshape.setFillColor(over_color);
     MouseEnter.call();
 }
@@ -100,5 +104,6 @@ void MenuButton::mouseLeave()
 
 void MenuButton::onClick()
 {
+    clickTime = Resources::clock.getElapsedTime();
     OnClick.call();
 }

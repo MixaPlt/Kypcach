@@ -33,41 +33,49 @@
 	<memory>
 	<assert.h>
 
-1527588415 source:/home/mixa/Projects/Kyp/main.cpp
+1527625228 source:/home/mixa/Projects/Kyp/main.cpp
 	<SFML/Graphics.hpp>
 	"MenuButton.hpp"
 	"Resources.hpp"
 	<functional>
 	<MainMenu.hpp>
+	<iostream>
 
-1527587912 /home/mixa/Projects/Kyp/include/MenuButton.hpp
+1527616779 /home/mixa/Projects/Kyp/include/MenuButton.hpp
 	<SFML/Graphics.hpp>
 	"Resources.hpp"
 	"Events.hpp"
 
-1527588913 /home/mixa/Projects/Kyp/include/Resources.hpp
+1527623752 /home/mixa/Projects/Kyp/include/Resources.hpp
 	<SFML/Graphics.hpp>
 	<Events.hpp>
 
-1527587988 /home/mixa/Projects/Kyp/include/Events.hpp
+1527620910 /home/mixa/Projects/Kyp/include/Events.hpp
 	<set>
 	<functional>
 	<memory>
 	<assert.h>
+	"Resources.hpp"
 
-1527588041 source:/home/mixa/Projects/Kyp/src/MenuButton.cpp
+1527625960 source:/home/mixa/Projects/Kyp/src/MenuButton.cpp
 	"MenuButton.hpp"
 	<iostream>
 
-1527586216 source:/home/mixa/Projects/Kyp/src/Resources.cpp
+1527623440 source:/home/mixa/Projects/Kyp/src/Resources.cpp
 	"Resources.hpp"
 
-1527588457 source:/home/mixa/Projects/Kyp/src/MainMenu.cpp
+1527626395 source:/home/mixa/Projects/Kyp/src/MainMenu.cpp
 	"MainMenu.hpp"
+	<iostream>
 
-1527588415 /home/mixa/Projects/Kyp/include/MainMenu.hpp
+1527626572 /home/mixa/Projects/Kyp/include/MainMenu.hpp
 	<MenuButton.hpp>
 	<SFML/Graphics.hpp>
 	"Resources.hpp"
 	"Events.hpp"
+
+1527619220 source:/home/mixa/Projects/Kyp/src/GameModeMenu.cpp
+	"GameModeMenu.h"
+
+1527619220 /home/mixa/Projects/Kyp/include/GameModeMenu.h
 
