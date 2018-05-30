@@ -2,6 +2,7 @@
 #define RESOURCES_H
 #include <SFML/Graphics.hpp>
 #include <Events.hpp>
+#include <iostream>
 
 struct DrawableSet
 {
@@ -27,9 +28,13 @@ public:
     void draw(sf::RenderWindow& window)
     {
         for(std::set<sf::Drawable*>::iterator it = ds.begin(); it != ds.end(); it++)
+        {
             window.draw(*(*it));
+        }
     }
 };
+
+
 
 class Resources
 {
@@ -45,6 +50,7 @@ class Resources
         static sf::Time mouseLeftDown;
         static sf::Time mouseLeftUp;
         static DrawableSet drawSet;
+        static DeleteSet deleteSet;
 
     protected:
 

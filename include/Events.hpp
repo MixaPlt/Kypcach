@@ -4,6 +4,8 @@
 #include <memory>
 #include <assert.h>
 #include "Resources.hpp"
+#include <queue>
+#include <iostream>
 
 struct delegate_container
 {
@@ -72,6 +74,53 @@ public:
         std::set< delegate_void* >::iterator i = poll.find(dv);
         if(i != poll.end())
             poll.erase(i);
+    }
+};
+
+struct delete_container
+{
+public:
+    virtual void call()
+    {
+
+    }
+};
+
+template <class T>
+struct d_container : public delete_container
+{
+private:
+    T* object;
+public:
+    void call()
+    {
+        delete(object);
+        std::cout << " ( " << object <<" )\n";
+    }
+    d_container(T* _object) : object(_object)
+    {
+
+    }
+};
+
+
+struct DeleteSet
+{
+private:
+    std::queue<delete_container*> qu;
+public:
+    template <class T> void add(T* object)
+    {
+        qu.push(new d_container<T>(object));
+    }
+    void call()
+    {
+        while(!qu.empty())
+        {
+            qu.front()->call();
+            qu.pop();
+
+        }
     }
 };
 

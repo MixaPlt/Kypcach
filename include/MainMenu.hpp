@@ -2,8 +2,9 @@
 #define MAINMENU_H
 #include <MenuButton.hpp>
 #include <SFML/Graphics.hpp>
-#include "Resources.hpp"
-#include "Events.hpp"
+#include <Resources.hpp>
+#include <Events.hpp>
+#include <GameModeMenu.h>
 
 class MainMenu : public sf::Drawable
 {

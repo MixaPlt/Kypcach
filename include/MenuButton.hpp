@@ -19,19 +19,21 @@ class MenuButton : public sf::Drawable
         event MouseEnter;
         event MouseLeave;
         event OnClick;
+        void setOutColor(sf::Color color);
+        void setOverColor(sf::Color color);
+        void setFontColor(sf::Color color);
+        void setOutlineThickness(float thickness);
+        void setOutlineColor(const sf::Color& color);
 
     protected:
-
-    private:
+        sf::Color out_color;
+        sf::Color over_color;
+        sf::Color font_color;
         sf::RectangleShape rectshape;
         sf::Text text;
         sf::Vector2f position;
         sf::Vector2f size;
         unsigned int fontSize;
-        sf::Color out_color;
-        sf::Color over_color;
-        sf::Color font_color;
-        void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         void mouseEnter();
         void mouseLeave();
         void onClick();
@@ -39,6 +41,10 @@ class MenuButton : public sf::Drawable
         delegate_void* upid;
         sf::Time clickTime;
         sf::Time overTime;
+    private:
+
+        void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
 };
 
 #endif // MENUBUTTON_H

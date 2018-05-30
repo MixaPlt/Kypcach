@@ -1,12 +1,13 @@
 #include "Resources.hpp"
 
 sf::Font* Resources::sansation = new sf::Font;
-sf::RenderWindow Resources::_mainWindow(sf::VideoMode(800, 600), "Kypcach", sf::Style::Close);
+sf::RenderWindow Resources::_mainWindow(sf::VideoMode(500, 600), "Kypcach", sf::Style::Close);
 event Resources::updater;
 sf::Clock Resources::clock;
 sf::Time Resources::mouseLeftDown;
 sf::Time Resources::mouseLeftUp;
 DrawableSet Resources::drawSet;
+DeleteSet Resources::deleteSet;
 
 Resources::Resources()
 {

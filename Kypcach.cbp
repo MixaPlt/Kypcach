@@ -39,11 +39,15 @@
 		</Compiler>
 		<Unit filename="include/Events.hpp" />
 		<Unit filename="include/GameModeMenu.h" />
+		<Unit filename="include/ImageButton.hpp" />
+		<Unit filename="include/LevelSelectionWinodw.h" />
 		<Unit filename="include/MainMenu.hpp" />
 		<Unit filename="include/MenuButton.hpp" />
 		<Unit filename="include/Resources.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/GameModeMenu.cpp" />
+		<Unit filename="src/ImageButton.cpp" />
+		<Unit filename="src/LevelSelectionWinodw.cpp" />
 		<Unit filename="src/MainMenu.cpp" />
 		<Unit filename="src/MenuButton.cpp" />
 		<Unit filename="src/Resources.cpp" />

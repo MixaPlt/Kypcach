@@ -4,6 +4,7 @@
 #include <functional>
 #include <MainMenu.hpp>
 #include <iostream>
+#include <ImageButton.hpp>
 
 void pollEvents(sf::RenderWindow& window)
 {
@@ -27,16 +28,16 @@ void pollEvents(sf::RenderWindow& window)
 
 int main()
 {
-    setlocale(LC_ALL, "Russian");
-    std::cout << "Добро пожаловать!\n";
     sf::RenderWindow& window(Resources::mainWindow());
     sf::Color background_color(150, 200, 200, 255);
-    if(Resources::unload())
-        return 1;
+    Resources::unload();
 //!-------------------------------------------------------------------------
 
-    MainMenu mainMenu;
-    Resources::drawSet.add(mainMenu);
+
+    ImageButton img(sf::Vector2f(100, 100), sf::Vector2f(200, 400), "resources/texture.png");
+
+    MainMenu* mainMenu = new MainMenu();
+    Resources::drawSet.add(*mainMenu);
 
     while (window.isOpen())
     {
@@ -44,7 +45,10 @@ int main()
         Resources::updater.call();
         window.clear(background_color);
         Resources::drawSet.draw(window);
+        window.draw(img);
+
         window.display();
+        Resources::deleteSet.call();
     }
 
     return 0;
