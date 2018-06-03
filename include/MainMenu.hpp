@@ -20,10 +20,10 @@ class MainMenu : public sf::Drawable
         MenuButton* settingButton;
         MenuButton* techButton;
         MenuButton* exitButton;
-        void play();
-        void settings();
-        void tech();
-        void exit();
+        void play(MenuButton* sender);
+        void settings(MenuButton* sender);
+        void tech(MenuButton* sender);
+        void exit(MenuButton* sender);
 };
 
 #endif // MAINMENU_H

@@ -16,14 +16,19 @@ class MenuButton : public sf::Drawable
         void setPosition(const sf::Vector2f &position);
         bool isMouseOver() const;
         void update();
-        event MouseEnter;
-        event MouseLeave;
-        event OnClick;
+        event_sender<MenuButton*> MouseEnter;
+        event_sender<MenuButton*> MouseLeave;
+        event_sender<MenuButton*> OnClick;
         void setOutColor(sf::Color color);
         void setOverColor(sf::Color color);
         void setFontColor(sf::Color color);
         void setOutlineThickness(float thickness);
         void setOutlineColor(const sf::Color& color);
+        bool mouseOver;
+        void resize(sf::Vector2f size);
+        void setMouseOverResize(sf::Vector2f size);
+
+        long id = 0;
 
     protected:
         sf::Color out_color;
@@ -37,10 +42,10 @@ class MenuButton : public sf::Drawable
         void mouseEnter();
         void mouseLeave();
         void onClick();
-        bool mouseOver;
         delegate_void* upid;
         sf::Time clickTime;
         sf::Time overTime;
+        sf::Vector2f mouseOverResize;
     private:
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;

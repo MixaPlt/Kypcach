@@ -21,7 +21,10 @@ void MainMenu::update()
 
 MainMenu::~MainMenu()
 {
-    std::cout << "MainMenu deleted";
+    Resources::deleteSet.add (playButton);
+    Resources::deleteSet.add (settingButton);
+    Resources::deleteSet.add (techButton);
+    Resources::deleteSet.add (exitButton);
 }
 
 void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -32,30 +35,26 @@ void MainMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(*exitButton);
 }
 
-void MainMenu::play()
+void MainMenu::play(MenuButton* sender)
 {
     Resources::drawSet.remove(this);
-    Resources::deleteSet.add (playButton);
-    Resources::deleteSet.add (settingButton);
-    Resources::deleteSet.add (techButton);
-    Resources::deleteSet.add (exitButton);
     Resources::deleteSet.add (this);
 
     GameModeMenu* gameModeMenu = new GameModeMenu();
     Resources::drawSet.add(*gameModeMenu);
 }
 
-void MainMenu::settings()
+void MainMenu::settings(MenuButton* sender)
 {
 
 }
 
-void MainMenu::tech()
+void MainMenu::tech(MenuButton* sender)
 {
 
 }
 
-void MainMenu::exit()
+void MainMenu::exit(MenuButton* sender)
 {
     Resources::mainWindow().close();
 }

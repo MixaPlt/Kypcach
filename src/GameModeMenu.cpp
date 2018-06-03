@@ -2,37 +2,90 @@
 
 GameModeMenu::GameModeMenu()
 {
-    firstMode = new ImageButton(sf::Vector2f(300, 150), sf::Vector2f(100, 75));
-    secondMode = new ImageButton(sf::Vector2f(300, 150), sf::Vector2f(100, 225));
-    thirdMode = new ImageButton(sf::Vector2f(300, 150), sf::Vector2f(100, 375));
+    firstModeButton = new ImageButton(sf::Vector2f(300, 150), sf::Vector2f(100, 75));
+    secondModeButton = new ImageButton(sf::Vector2f(300, 150), sf::Vector2f(100, 225));
+    thirdModeButton = new ImageButton(sf::Vector2f(300, 150), sf::Vector2f(100, 375));
 
-    firstMode->setOutColor(sf::Color(255, 255, 255, 255));
-    secondMode->setOutColor(sf::Color(255, 255, 255, 255));
-    thirdMode->setOutColor(sf::Color(255, 255, 255, 255));
+    firstModeButton->setOutColor(sf::Color(255, 255, 255, 255));
+    secondModeButton->setOutColor(sf::Color(255, 255, 255, 255));
+    thirdModeButton->setOutColor(sf::Color(200, 200, 200, 255));
 
-    firstMode->setTexture("resources/easy.jpg");
-    secondMode->setTexture("resources/medium.jpg");
-    thirdMode->setTexture("resources/hard.jpg");
+    firstModeButton->setTexture("resources/easy.jpg");
+    secondModeButton->setTexture("resources/medium.jpg");
+    thirdModeButton->setTexture("resources/hard.jpg");
 
-    firstMode->setOutlineThickness(2);
-    secondMode->setOutlineThickness(2);
-    thirdMode->setOutlineThickness(2);
+    firstModeButton->setOutlineThickness(2);
+    secondModeButton->setOutlineThickness(2);
+    thirdModeButton->setOutlineThickness(2);
 
-    infoLabel = new sf::Text(L"Выберите режим игры", Resources::getSansation(), 30);
-    infoLabel->setPosition(100, 0);
+    infoLabel = new sf::Text(L"Выберите сложность игры", Resources::getSansation(), 30);
+    infoLabel->setPosition(75, 0);
     infoLabel->setColor(sf::Color::Black);
 
+    backButton = new MenuButton(L"Назад", sf::Vector2f(150, 50), sf::Vector2f(0, 550));
+    backButton->OnClick.add(this, &GameModeMenu::back);
+
+    firstModeButton->OnClick.add(this, &GameModeMenu::firstMode);
+    secondModeButton->OnClick.add(this, &GameModeMenu::secondMode);
+    thirdModeButton->OnClick.add(this, &GameModeMenu::thirdMode);
+
+    firstModeButton->setFontColor(sf::Color(255, 10, 10, 255));
+    secondModeButton->setFontColor(sf::Color(255, 10, 10, 255));
+    thirdModeButton->setFontColor(sf::Color(255, 10, 10, 255));
+
+    thirdModeButton->setFontSize(43);
+
+    firstModeButton->setContent(L"Простой");
+    secondModeButton->setContent(L"Cложный");
+    thirdModeButton->setContent(L"Невозможный");
 }
 
 GameModeMenu::~GameModeMenu()
 {
-    std::cout << "GameModeMenu deleted";
+    Resources::deleteSet.add(firstModeButton);
+    Resources::deleteSet.add(secondModeButton);
+    Resources::deleteSet.add(thirdModeButton);
+    Resources::deleteSet.add(backButton);
+    Resources::deleteSet.add(infoLabel);
 }
 
 void GameModeMenu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(*firstMode);
-    target.draw(*secondMode);
-    target.draw(*thirdMode);
+    target.draw(*firstModeButton);
+    target.draw(*secondModeButton);
+    target.draw(*thirdModeButton);
     target.draw(*infoLabel);
+    target.draw(*backButton);
+}
+
+void GameModeMenu::back(MenuButton* sender)
+{
+    Resources::drawSet.remove(this);
+    Resources::deleteSet.add(this);
+    MainMenu* mainMenu = new MainMenu;
+    Resources::drawSet.add(*mainMenu);
+}
+
+void GameModeMenu::firstMode(MenuButton* sender)
+{
+    Resources::drawSet.remove(this);
+    Resources::deleteSet.add(this);
+    LevelSelectionWindow* levelSelectionWindow = new LevelSelectionWindow(0);
+    Resources::drawSet.add(*levelSelectionWindow);
+}
+
+void GameModeMenu::secondMode(MenuButton* sender)
+{
+    Resources::drawSet.remove(this);
+    Resources::deleteSet.add(this);
+    LevelSelectionWindow* levelSelectionWindow = new LevelSelectionWindow(1);
+    Resources::drawSet.add(*levelSelectionWindow);
+}
+
+void GameModeMenu::thirdMode(MenuButton* sender)
+{
+    Resources::drawSet.remove(this);
+    Resources::deleteSet.add(this);
+    LevelSelectionWindow* levelSelectionWindow = new LevelSelectionWindow(2);
+    Resources::drawSet.add(*levelSelectionWindow);
 }

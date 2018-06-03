@@ -12,6 +12,12 @@ ImageButton::ImageButton(const sf::Vector2f& _size, const sf::Vector2f& _positio
         setTexture(texture_path);
 }
 
+ImageButton::ImageButton(const sf::Vector2f& _size)
+    : MenuButton("", _size, sf::Vector2f(0, 0))
+{
+
+}
+
 ImageButton::~ImageButton()
 {
     //dtor
