@@ -12,7 +12,6 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
@@ -38,6 +37,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Events.hpp" />
+		<Unit filename="include/Game.hpp" />
 		<Unit filename="include/GameModeMenu.h" />
 		<Unit filename="include/ImageButton.hpp" />
 		<Unit filename="include/Level.h" />
@@ -47,6 +47,7 @@
 		<Unit filename="include/MenuButton.hpp" />
 		<Unit filename="include/Resources.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/GameModeMenu.cpp" />
 		<Unit filename="src/ImageButton.cpp" />
 		<Unit filename="src/Level.cpp" />

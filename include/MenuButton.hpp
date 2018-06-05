@@ -27,15 +27,20 @@ class MenuButton : public sf::Drawable
         bool mouseOver;
         void resize(sf::Vector2f size);
         void setMouseOverResize(sf::Vector2f size);
+        void setTextOutlineThickness(float thickness);
+        void setTextOutlineColor(sf::Color color);
 
         long id = 0;
+        void show();
+        void hide();
+        sf::Text text;
 
     protected:
         sf::Color out_color;
         sf::Color over_color;
         sf::Color font_color;
         sf::RectangleShape rectshape;
-        sf::Text text;
+
         sf::Vector2f position;
         sf::Vector2f size;
         unsigned int fontSize;
@@ -49,6 +54,7 @@ class MenuButton : public sf::Drawable
     private:
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        bool visibility;
 
 };
 

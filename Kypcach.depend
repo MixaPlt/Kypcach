@@ -33,7 +33,7 @@
 	<memory>
 	<assert.h>
 
-1527684818 source:/home/mixa/Projects/Kyp/main.cpp
+1528221445 source:/home/mixa/Projects/Kyp/main.cpp
 	<SFML/Graphics.hpp>
 	"MenuButton.hpp"
 	"Resources.hpp"
@@ -42,17 +42,17 @@
 	<iostream>
 	<ImageButton.hpp>
 
-1528038909 /home/mixa/Projects/Kyp/include/MenuButton.hpp
+1528214827 /home/mixa/Projects/Kyp/include/MenuButton.hpp
 	<SFML/Graphics.hpp>
 	"Resources.hpp"
 	"Events.hpp"
 
-1527683525 /home/mixa/Projects/Kyp/include/Resources.hpp
+1528218649 /home/mixa/Projects/Kyp/include/Resources.hpp
 	<SFML/Graphics.hpp>
 	<Events.hpp>
 	<iostream>
 
-1528035398 /home/mixa/Projects/Kyp/include/Events.hpp
+1528224618 /home/mixa/Projects/Kyp/include/Events.hpp
 	<set>
 	<functional>
 	<memory>
@@ -62,11 +62,11 @@
 	<iostream>
 	<typeinfo>
 
-1528038892 source:/home/mixa/Projects/Kyp/src/MenuButton.cpp
+1528214827 source:/home/mixa/Projects/Kyp/src/MenuButton.cpp
 	"MenuButton.hpp"
 	<iostream>
 
-1527683483 source:/home/mixa/Projects/Kyp/src/Resources.cpp
+1528219034 source:/home/mixa/Projects/Kyp/src/Resources.cpp
 	"Resources.hpp"
 
 1528038950 source:/home/mixa/Projects/Kyp/src/MainMenu.cpp
@@ -80,7 +80,7 @@
 	<Events.hpp>
 	<GameModeMenu.h>
 
-1528038938 source:/home/mixa/Projects/Kyp/src/GameModeMenu.cpp
+1528041683 source:/home/mixa/Projects/Kyp/src/GameModeMenu.cpp
 	"GameModeMenu.h"
 
 1528038775 /home/mixa/Projects/Kyp/include/GameModeMenu.h
@@ -101,10 +101,10 @@
 	<Events.hpp>
 	<MenuButton.hpp>
 
-1528038944 source:/home/mixa/Projects/Kyp/src/LevelSelectionWinodw.cpp
+1528105735 source:/home/mixa/Projects/Kyp/src/LevelSelectionWinodw.cpp
 	"LevelSelectionWinodw.h"
 
-1528038827 /home/mixa/Projects/Kyp/include/LevelSelectionWinodw.h
+1528105624 /home/mixa/Projects/Kyp/include/LevelSelectionWinodw.h
 	<ImageButton.hpp>
 	<SFML/Graphics.hpp>
 	<Resources.hpp>
@@ -115,15 +115,31 @@
 	<GameModeMenu.h>
 	<vector>
 	<string>
+	<Game.hpp>
 
-1527690864 source:/home/mixa/Projects/Kyp/src/Level.cpp
+1528217340 source:/home/mixa/Projects/Kyp/src/Level.cpp
 	"Level.h"
 
-1527691983 /home/mixa/Projects/Kyp/include/Level.h
+1528217310 /home/mixa/Projects/Kyp/include/Level.h
 	<SFML/Graphics.hpp>
 
-1527700014 source:/home/mixa/Projects/Kyp/src/Levels.cpp
+1528221829 source:/home/mixa/Projects/Kyp/src/Levels.cpp
 	"Levels.h"
 
-1527694935 /home/mixa/Projects/Kyp/include/Levels.h
+1528113178 /home/mixa/Projects/Kyp/include/Levels.h
+	<Level.h>
+	<string>
+
+1528224164 source:/home/mixa/Projects/Kyp/src/Game.cpp
+	"Game.hpp"
+
+1528219366 /home/mixa/Projects/Kyp/include/Game.hpp
+	<MenuButton.hpp>
+	<SFML/Graphics.hpp>
+	<Resources.hpp>
+	<Events.hpp>
+	<GameModeMenu.h>
+	<vector>
+	<memory>
+	<cstring>
 

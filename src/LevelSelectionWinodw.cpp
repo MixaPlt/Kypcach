@@ -19,15 +19,18 @@ LevelSelectionWindow::LevelSelectionWindow(const unsigned short& _mode)
         levelButtons[i]->MouseEnter.add(this, &LevelSelectionWindow::levelButtonMouseEnter);
         levelButtons[i]->setMouseOverResize(sf::Vector2f(10, 10));
         levelButtons[i]->id = i;
+        levelButtons[i]->OnClick.add(this, &LevelSelectionWindow::levelSelected);
     }
 
     infoLabel = new sf::Text(L"Выберите уровень", Resources::getSansation(), 40);
     infoLabel->setPosition(sf::Vector2f(70, 15));
     infoLabel->setColor(sf::Color(90, 255, 90, 255));
+    infoLabel->setOutlineThickness(1);
 }
 
 LevelSelectionWindow::~LevelSelectionWindow()
 {
+    Resources::drawSet.remove(this);
     Resources::deleteSet.add(backButton);
     for(int i = 0; i < levelsNumber; i++)
         Resources::deleteSet.add(levelButtons[i]);
@@ -55,4 +58,12 @@ void LevelSelectionWindow::back(MenuButton* sender)
 void LevelSelectionWindow::levelButtonMouseEnter(MenuButton* sender)
 {
 
+}
+
+void LevelSelectionWindow::levelSelected(MenuButton* sender)
+{
+    int selected_id = sender->id;
+    Resources::deleteSet.add(this);
+    Game* game = new Game(mode, selected_id);
+    Resources::drawSet.add(*game);
 }

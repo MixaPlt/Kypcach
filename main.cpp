@@ -23,11 +23,27 @@ void pollEvents(sf::RenderWindow& window)
 			if (event.mouseButton.button == sf::Mouse::Left)
 				Resources::mouseLeftUp = Resources::clock.getElapsedTime();
 		}
+
+		if (event.type == sf::Event::TextEntered)
+        {
+            Resources::keyPressed.call();
+            int code = event.text.unicode;
+            if(code >= 'a' && code <= 'z')
+                code += 'A' - 'a';
+            if (code >= '0' && code <= '9'  || code >= 'A' && code <= 'Z')
+            {
+                char str[1] = {'a'};
+                str[0] = char(code);
+                Resources::entered_text = str;
+                Resources::textEntered.call(str);
+            }
+        }
 	}
 }
 
 int main()
 {
+    srand( time( 0 ) );
     sf::RenderWindow& window(Resources::mainWindow());
     sf::Color background_color(150, 200, 200, 255);
     Resources::unload();

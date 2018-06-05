@@ -10,6 +10,7 @@
 #include <GameModeMenu.h>
 #include <vector>
 #include <string>
+#include <Game.hpp>
 
 class LevelSelectionWindow : public sf::Drawable
 {
@@ -29,6 +30,7 @@ class LevelSelectionWindow : public sf::Drawable
         void levelButtonMouseEnter(MenuButton* sender);
         int overButton;
         sf::Text* infoLabel;
+        void levelSelected(MenuButton* sender);
 };
 
 #endif // LEVELSELECTIONWINODW_H

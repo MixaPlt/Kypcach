@@ -8,6 +8,9 @@ sf::Time Resources::mouseLeftDown;
 sf::Time Resources::mouseLeftUp;
 DrawableSet Resources::drawSet;
 DeleteSet Resources::deleteSet;
+std::string Resources::entered_text = "";
+event_sender<std::string> Resources::textEntered;
+event Resources::keyPressed;
 
 Resources::Resources()
 {

@@ -5,15 +5,16 @@
 class Level
 {
     public:
-        Level();
+        Level(int _mode, int _levelNumber, int _testsNumber, std::string (*alg)(sf::Vector2u point));
         virtual ~Level();
-
-        sf::Vector2u (*alg)(sf::Vector2u point);
-        unsigned short height, width;
-
+        std::string step(sf::Vector2u from);
+        unsigned short fieldHeight, fieldWidth;
+        unsigned int testsNumber;
     protected:
 
     private:
+
+        std::string (*alg)(sf::Vector2u point);
 };
 
 #endif // LEVEL_H

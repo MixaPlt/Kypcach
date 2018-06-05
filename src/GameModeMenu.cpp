@@ -29,9 +29,17 @@ GameModeMenu::GameModeMenu()
     secondModeButton->OnClick.add(this, &GameModeMenu::secondMode);
     thirdModeButton->OnClick.add(this, &GameModeMenu::thirdMode);
 
-    firstModeButton->setFontColor(sf::Color(255, 10, 10, 255));
-    secondModeButton->setFontColor(sf::Color(255, 10, 10, 255));
-    thirdModeButton->setFontColor(sf::Color(255, 10, 10, 255));
+    firstModeButton->setFontColor(sf::Color(0, 255, 0, 255));
+    secondModeButton->setFontColor(sf::Color(0, 0, 100, 255));
+    thirdModeButton->setFontColor(sf::Color(255, 0, 0, 255));
+
+    firstModeButton->setTextOutlineColor(sf::Color::Black);
+    secondModeButton->setTextOutlineColor(sf::Color::Magenta);
+    thirdModeButton->setTextOutlineColor(sf::Color::Yellow);
+
+    firstModeButton->setTextOutlineThickness(2);
+    secondModeButton->setTextOutlineThickness(2);
+    thirdModeButton->setTextOutlineThickness(2);
 
     thirdModeButton->setFontSize(43);
 

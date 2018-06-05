@@ -51,6 +51,9 @@ class Resources
         static sf::Time mouseLeftUp;
         static DrawableSet drawSet;
         static DeleteSet deleteSet;
+        static event_sender<std::string> textEntered;
+        static std::string entered_text;
+        static event keyPressed;
 
     protected:
 

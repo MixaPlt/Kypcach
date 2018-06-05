@@ -67,14 +67,20 @@ public:
     {
         for(std::set< delegate_void* >::iterator i = poll.begin(); i != poll.end(); i++)
         {
+            std::cout <<"1111\n";
             (*i)->call();
+            std::cout <<"2222\n";
         }
     }
     void remove(delegate_void* dv)
     {
-        std::set< delegate_void* >::iterator i = poll.find(dv);
-        if(i != poll.end())
-            poll.erase(i);
+        std::set< delegate_void* >::iterator it = poll.find(dv);
+        if(it != poll.end())
+        {
+            std::cout << "delegate not found\n";
+            poll.erase(it);
+        }
+        delete(dv);
     }
 };
 
@@ -84,7 +90,7 @@ public:
 //!############################################################################################
 //!--------------------------------------------------------------------------------------------
 
-template <class S>
+template <typename S>
 struct delegate_sender_container
 {
 public:
@@ -94,9 +100,9 @@ public:
     }
 };
 
-template< class T, class M, class S > struct container_sender : public delegate_sender_container<S> {};
+template< class T, class M, typename S > struct container_sender : public delegate_sender_container<S> {};
 
-template< class T, class S >
+template< class T, typename S >
 struct container_sender< T, void (T::*)(S), S > : public delegate_sender_container<S>
 {
 private:
@@ -110,7 +116,7 @@ public:
     }
 };
 
-template<class S>
+template<typename S>
 struct delegate_sender
 {
 private:
@@ -130,30 +136,41 @@ public:
     }
 };
 
-template<class S>
+template<typename S>
 struct event_sender
 {
 private:
-    std::vector< delegate_sender<S>* > poll;
+    std::set< delegate_sender<S>* > poll;
 public:
     template< class T, class U > delegate_sender<S>* add( T* object, U method )
     {
         delegate_sender<S> *dv = new delegate_sender<S> (object, method);
-        poll.push_back(dv);
+        poll.insert(dv);
         return dv;
     }
     void call(S sender)
     {
-        for(int i = 0; i != poll.size(); i++)
+        typename std::set< delegate_sender<S>* >::iterator it;
+        for(it = poll.begin(); it != poll.end(); it++)
         {
-            (poll[i])->call(sender);
+            (*it)->call(sender);
         }
     }
+    void remove(delegate_sender<S>* dv)
+    {
+        typename std::set< delegate_sender<S>* >::iterator it = poll.find(dv);
+        if(it != poll.end())
+        {
+            poll.erase(it);
+        }
+        delete(dv);
+    }
+
 };
 
-//!-----------------------------------------------------------------------------------------------------------
-//############################################################################################################
-//!-----------------------------------------------------------------------------------------------------------
+//!-----------------------------------------------------------------------------------------------------------|
+//############################################################################################################|
+//!-----------------------------------------------------------------------------------------------------------|
 
 struct delete_container
 {
@@ -172,8 +189,9 @@ private:
 public:
     void call()
     {
-        delete(object);
         std::cout << typeid(object).name() << "\t deleted\t ( " << object <<" )\n";
+        delete(object);
+
     }
     d_container(T* _object) : object(_object)
     {
@@ -196,8 +214,8 @@ public:
         while(!qu.empty())
         {
             qu.front()->call();
+            delete(qu.front());
             qu.pop();
-
         }
     }
 };

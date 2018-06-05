@@ -24,6 +24,8 @@ MenuButton::MenuButton(const sf::String& _content, const sf::Vector2f& _size, co
 	mouseOver = 0;
 
 	upid = Resources::updater.add(this, &MenuButton::update);
+
+	visibility = 1;
 }
 
 bool MenuButton::isMouseOver() const
@@ -65,11 +67,14 @@ void MenuButton::setPosition(const sf::Vector2f &_position)
 
 MenuButton::~MenuButton()
 {
-    Resources::updater.remove(upid);
+    if(visibility)
+        Resources::updater.remove(upid);
 }
 
 void MenuButton::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+    if(!visibility)
+        return;
     target.draw(rectshape);
 	target.draw(text);
 }
@@ -149,4 +154,31 @@ void MenuButton::setMouseOverResize(sf::Vector2f _size)
 {
     mouseOverResize = _size;
 }
+
+void MenuButton::setTextOutlineThickness(float thickness)
+{
+    text.setOutlineThickness(thickness);
+}
+
+void MenuButton::setTextOutlineColor(sf::Color color)
+{
+    text.setOutlineColor(color);
+}
+
+void MenuButton::show()
+{
+    if(visibility)
+        return;
+    Resources::updater.add(this, &MenuButton::update);
+    Resources::drawSet.add(*this);
+}
+void MenuButton::hide()
+{
+    if(!visibility)
+        return;
+    Resources::updater.remove(upid);
+    Resources::drawSet.remove(this);
+}
+
+
 
