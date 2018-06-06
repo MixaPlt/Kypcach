@@ -53,7 +53,7 @@ class Resources
         static DeleteSet deleteSet;
         static event_sender<std::string> textEntered;
         static std::string entered_text;
-        static event keyPressed;
+        static event_sender<std::string> keyPressed;
 
     protected:
 

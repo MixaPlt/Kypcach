@@ -18,7 +18,7 @@ GameModeMenu::GameModeMenu()
     secondModeButton->setOutlineThickness(2);
     thirdModeButton->setOutlineThickness(2);
 
-    infoLabel = new sf::Text(L"Выберите сложность игры", Resources::getSansation(), 30);
+    infoLabel = new sf::Text(L"Выберите режим игры", Resources::getSansation(), 30);
     infoLabel->setPosition(75, 0);
     infoLabel->setColor(sf::Color::Black);
 

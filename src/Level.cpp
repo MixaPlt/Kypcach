@@ -1,10 +1,11 @@
 #include "Level.h"
 
-Level::Level(int _height, int _width, int _testsNumber, std::string (*_alg)(sf::Vector2u point))
+Level::Level(int _height, int _width, int _testsNumber, std::string (*_alg)(sf::Vector2u point), int _score)
     :fieldHeight(_height),
     fieldWidth(_width),
     alg(_alg),
-    testsNumber(_testsNumber)
+    testsNumber(_testsNumber),
+    score(_score)
 {
 
 }

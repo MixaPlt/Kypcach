@@ -19,6 +19,7 @@ Game::Game(int _mode, int _levelNumber)
     rectHeight = 500.f / level.fieldHeight;
     rectWidth = 500.f / level.fieldWidth;
     rects.resize(level.fieldHeight);
+    int fs = std::min(rectHeight, rectWidth) / 1.8;
     for(int i = 0; i < level.fieldHeight; i++)
     {
         rects[i].resize(level.fieldWidth);
@@ -30,9 +31,9 @@ Game::Game(int _mode, int _levelNumber)
             rects[i][j]->setOutColor(sf::Color(100, 255, 255));
             rects[i][j]->setOverColor(sf::Color::Cyan);
             rects[i][j]->OnClick.add(this, &Game::rectClick);
+            rects[i][j]->setFontSize(fs);
         }
     }
-    Resources::drawSet.add(*readyButton);
     pmod = 0;
     turnsNumber = 0;
     upidptr = 0;
@@ -41,6 +42,8 @@ Game::Game(int _mode, int _levelNumber)
     infoLabel = new sf::Text(L"Выберите клетку", Resources::getSansation(), 40);
     infoLabel->setFillColor(sf::Color(255, 20, 20));
     infoLabel->setPosition(sf::Vector2f(100, 0));
+    score = level.score;
+    mistakes = 0;
 }
 
 Game::~Game()
@@ -49,6 +52,7 @@ Game::~Game()
     Resources::deleteSet.add(backButton);
     Resources::textEntered.remove(upidptr);
     Resources::deleteSet.add(infoLabel);
+    Resources::keyPressed.remove(kprsdidptr);
     for(int i = 0; i < rects.size(); i++)
         for(int j = 0; j < rects[i].size(); j++)
             Resources::deleteSet.add(rects[i][j]);
@@ -61,13 +65,13 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates stater) const
             target.draw(*rects[i][j]);
     target.draw(*backButton);
     target.draw(*infoLabel);
+    target.draw(*readyButton);
 }
 
 void Game::back(MenuButton* sender)
 {
     Resources::drawSet.remove(this);
     Resources::deleteSet.add(this);
-    std::cout <<"KEK1\n";
     LevelSelectionWindow* levelSelectionWindow = new LevelSelectionWindow(mode);
     Resources::drawSet.add(*levelSelectionWindow);
 }
@@ -87,7 +91,7 @@ void Game::ready(MenuButton* sender)
         return;
     if(std::string(rects[selectedY][selectedX]->text.getString())[0] != level.step(sf::Vector2u(selectedX, selectedY))[0])
     {
-        back(backButton);
+        mistakes++;
     }
     passedTests++;
     rects[selectedY][selectedX]->id = -1;
@@ -95,7 +99,8 @@ void Game::ready(MenuButton* sender)
         checkAlgorithm();
     else
     {
-        won();
+        if(passedTests == level.testsNumber)
+            won();
     }
 }
 
@@ -142,18 +147,23 @@ void Game::textEntered(std::string text)
 void Game::won()
 {
     kprsdidptr = Resources::keyPressed.add(this, &Game::winWait);
-    infoLabel->setPosition(0, 202);
-    infoLabel->setString("WINNER WINNER\nCHICKEN DINNER");
+    infoLabel->setPosition(2, 175);
+    score -= int(turnsNumber * sqrt(turnsNumber));
+    score -= int(mistakes * 1.5 / level.testsNumber * 100.f);
+    infoLabel->setString("WINNER WINNER\nCHICKEN DINNER\nScore: " + std::to_string(score) + "/" + std::to_string(level.score));
+    if(score <= 0)
+    {
+        infoLabel->setString(L"Слабовато\nПопробуй снова");
+    }
     infoLabel->setStyle(sf::Text::Bold);
     infoLabel->setCharacterSize(56);
     infoLabel->setOutlineThickness(3);
     backButton->hide();
+    readyButton->hide();
 }
 
-void Game::winWait()
+void Game::winWait(std::string key)
 {
-    Resources::keyPressed.remove(kprsdidptr);
-    std::cout <<"KEK\n";
     back(backButton);
 }
 

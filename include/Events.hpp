@@ -56,6 +56,7 @@ struct event
 {
 private:
     std::set< delegate_void* > poll;
+    std::queue< std::set< delegate_void* >::iterator > dq;
 public:
     template< class T, class U > delegate_void* add( T* object, U method )
     {
@@ -65,11 +66,15 @@ public:
     }
     void call()
     {
+        while(!dq.empty())
+        {
+            poll.erase(dq.front());
+            delete(*dq.front());
+            dq.pop();
+        }
         for(std::set< delegate_void* >::iterator i = poll.begin(); i != poll.end(); i++)
         {
-            std::cout <<"1111\n";
             (*i)->call();
-            std::cout <<"2222\n";
         }
     }
     void remove(delegate_void* dv)
@@ -77,10 +82,8 @@ public:
         std::set< delegate_void* >::iterator it = poll.find(dv);
         if(it != poll.end())
         {
-            std::cout << "delegate not found\n";
-            poll.erase(it);
+            dq.push(it);
         }
-        delete(dv);
     }
 };
 
@@ -110,6 +113,10 @@ private:
     void (T::*method)(S);
 public:
     container_sender(T *_object, void (T::*_method)(S)) : object(_object), method(_method) {}
+    ~container_sender()
+    {
+
+    }
     void call(S sender)
     {
         (object->*method)(sender);
@@ -189,6 +196,8 @@ private:
 public:
     void call()
     {
+        if(!object)
+            return;
         std::cout << typeid(object).name() << "\t deleted\t ( " << object <<" )\n";
         delete(object);
 

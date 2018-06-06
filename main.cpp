@@ -26,8 +26,9 @@ void pollEvents(sf::RenderWindow& window)
 
 		if (event.type == sf::Event::TextEntered)
         {
-            Resources::keyPressed.call();
             int code = event.text.unicode;
+            Resources::keyPressed.call("" + char(code));
+
             if(code >= 'a' && code <= 'z')
                 code += 'A' - 'a';
             if (code >= '0' && code <= '9'  || code >= 'A' && code <= 'Z')

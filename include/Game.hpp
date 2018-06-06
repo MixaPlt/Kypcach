@@ -8,6 +8,8 @@
 #include <vector>
 #include <memory>
 #include <cstring>
+#include <cmath>
+#include <algorithm>
 
 class Game : public sf::Drawable
 {
@@ -37,9 +39,12 @@ class Game : public sf::Drawable
         delegate_sender<std::string>* upidptr;
         int passedTests;
         void won();
-        delegate_void* kprsdidptr;
-        void winWait();
+        delegate_sender<std::string>* kprsdidptr;
+        void winWait(std::string key);
         sf::Text* infoLabel;
+        void lose();
+        int mistakes;
+        int score;
 };
 
 #endif // GAME_H

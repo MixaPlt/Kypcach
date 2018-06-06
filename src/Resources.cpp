@@ -10,7 +10,7 @@ DrawableSet Resources::drawSet;
 DeleteSet Resources::deleteSet;
 std::string Resources::entered_text = "";
 event_sender<std::string> Resources::textEntered;
-event Resources::keyPressed;
+event_sender<std::string> Resources::keyPressed;
 
 Resources::Resources()
 {
